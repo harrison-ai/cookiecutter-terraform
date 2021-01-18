@@ -1,0 +1,17 @@
+tags:
+  - name: terraform
+
+envvars:
+  - name: AWS_PROFILE
+    optional: true
+    tags:
+      - terraform
+
+  - name: AWS_REGION
+    optional: true
+    tags:
+      - terraform
+
+  - name: ENVIRONMENT
+    tags:
+      - terraform

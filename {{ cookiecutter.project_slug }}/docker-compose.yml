@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+
+  terraform:
+    image: hashicorp/terraform
+    env_file: .env
+    entrypoint: []
+    volumes:
+      - '~/.aws:/root/.aws'
+      - '.:/app'
+    working_dir: '/app'
+
+  envvars:
+    image: 'flemay/envvars'
+    env_file: .env
+    working_dir: '/app'
+    volumes:
+      - '.:/app'

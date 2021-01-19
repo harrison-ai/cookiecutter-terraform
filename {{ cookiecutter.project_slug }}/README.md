@@ -37,13 +37,13 @@ aws_access_key_id=AKIAIOSFODNN7EXAMPLE
 aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 
-### What is this repository for? ###
+## What is this repository for?
 
 * Quick summary
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### How do I get set up? ###
+## How do I get set up?
 
 * Summary of set up
 * Configuration
@@ -52,13 +52,16 @@ aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 * How to run tests
 * Deployment instructions
 
-### Contribution guidelines ###
+## Contribution guidelines
 
 * Writing tests
 * Code review
 * Other guidelines
 
-### Who do I talk to? ###
+## Who do I talk to?
 
 * Repo owner or admin {{ cookiecutter.full_name }}({{ cookiecutter.email }})
 * Harrison.ai Data Engineering team
+
+## Credits
+This repository was created using the [harrison-ai terraform cookiecutter] template (https://github.com/harrison-ai/cookiecutter-terraform)

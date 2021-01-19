@@ -109,6 +109,22 @@ def test_locals_tf_with_defaults(cookies):
 
         assert tf_locals_prod == tf_locals_expected
 
+        # Check for symlinks
+        for env, name in zip(['dev', 'prod'],
+                             ['main.tf', 'data.tf', 'provider.tf']):
+            filepath = os.path.join(tf_dir, env, name)
+            assert os.path.islink(filepath)
+
+            # Open the link file
+            with open(filepath, 'r') as _f:
+                link = _f.read()
+
+            # Open the src file
+            with open(os.path.join(tf_dir, name), 'r') as _f:
+                src = _f.read()
+
+            assert link == src
+
 
 def test_backend_tf_with_defaults(cookies):
     with bake_in_temp_dir(cookies) as result:

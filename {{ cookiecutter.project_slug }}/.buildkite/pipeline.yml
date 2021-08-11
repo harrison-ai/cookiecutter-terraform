@@ -1,0 +1,10 @@
+env:
+  CI: true
+  TF_IN_AUTOMATION: true
+
+steps:
+  - label: ":terraform: Terraform Format"
+    agents:
+      queue: "{{ cookiecutter.buildkite_agent }}"
+    commands:
+      - make fmt

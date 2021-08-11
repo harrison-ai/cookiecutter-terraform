@@ -12,8 +12,8 @@ init: .env
 	docker-compose run --rm --workdir /app/$(DIR) terraform terraform init
 
 fmt:
-	docker-compose run --rm envvars ensure --tags terraform
-	docker-compose run --rm terraform terraform fmt -recursive tf
+	#docker-compose run --rm envvars ensure --tags terraform
+	docker-compose run --rm --workdir /app terraform terraform fmt -recursive tf
 
 plan: .env
 	docker-compose run --rm envvars ensure --tags terraform

@@ -3,8 +3,16 @@ env:
   TF_IN_AUTOMATION: true
 
 steps:
+  - label: ":terraform: Terraform Validate"
+    agents:
+      queue: "annalise-build"
+    commands:
+      - make validate
+
+  - wait
+
   - label: ":terraform: Terraform Format"
     agents:
-      queue: "{{ cookiecutter.buildkite_agent }}"
+      queue: "annalise-build"
     commands:
-      - make fmt
+      - make ci-fmt

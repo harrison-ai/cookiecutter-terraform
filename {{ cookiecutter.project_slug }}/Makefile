@@ -11,9 +11,11 @@ init: .env
 	docker-compose run --rm envvars ensure --tags terraform
 	docker-compose run --rm --workdir /app/$(DIR) terraform terraform init
 
-fmt:
-	#docker-compose run --rm envvars ensure --tags terraform
-	docker-compose run --rm --workdir /app terraform terraform fmt -recursive tf
+fmt: .env
+	docker-compose run --rm --workdir /app terraform terraform fmt -recursive
+
+ci-fmt: .env
+	docker-compose run --rm --workdir /app terraform terraform fmt -recursive -check -diff -write=false
 
 plan: .env
 	docker-compose run --rm envvars ensure --tags terraform
@@ -26,6 +28,9 @@ plan-print: .env
 apply: .env
 	docker-compose run --rm envvars ensure --tags terraform
 	docker-compose run --rm --workdir /app/$(DIR) terraform terraform apply
+
+validate: .env
+	./scripts/tf-validate.sh
 
 destroy: .env
 	docker-compose run --rm envvars ensure --tags terraform

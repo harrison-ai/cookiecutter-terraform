@@ -5,7 +5,7 @@ env:
 steps:
   - label: ":terraform: Terraform Validate"
     agents:
-      queue: "annalise-build"
+      queue: "{{ cookiecutter.buildkite_agent }}"
     commands:
       - make validate
 
@@ -13,6 +13,6 @@ steps:
 
   - label: ":terraform: Terraform Format"
     agents:
-      queue: "annalise-build"
+      queue: "{{ cookiecutter.buildkite_agent }}"
     commands:
       - make ci-fmt

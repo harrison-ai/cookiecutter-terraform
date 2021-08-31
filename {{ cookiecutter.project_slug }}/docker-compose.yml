@@ -4,7 +4,6 @@ services:
   terraform:
     image: hashicorp/terraform
     env_file: .env
-    entrypoint: []
     volumes:
       - '~/.aws:/root/.aws'
       - '.:/app'

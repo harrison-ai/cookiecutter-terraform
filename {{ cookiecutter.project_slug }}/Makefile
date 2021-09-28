@@ -19,8 +19,12 @@ init-upgrade: .env
 	docker-compose run --rm --workdir /app/$(DIR) terraform init -upgrade
 
 ## fmt: 			terraform fmt -recursive
-fmt:
-	docker-compose run --rm terraform fmt -recursive tf
+fmt: .env
+	docker-compose run --rm --workdir /app terraform terraform fmt -recursive
+
+## ci-fmt:			terraform fmt -recursive -check -diff -write=false
+ci-fmt: .env
+	docker-compose run --rm --workdir /app terraform terraform fmt -recursive -check -diff -write=false
 
 ## plan:			terraform plan
 plan: .env
@@ -36,6 +40,10 @@ plan-print: .env
 apply: .env
 	docker-compose run --rm envvars ensure --tags terraform
 	docker-compose run --rm --workdir /app/$(DIR) terraform apply
+
+## validate: 		terraform validate across all environments
+validate: .env
+	./scripts/tf-validate.sh
 
 ## destroy:		terraform destroy
 destroy: .env

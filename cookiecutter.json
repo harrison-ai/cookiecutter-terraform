@@ -12,6 +12,7 @@
     "environment_dev": "{{ cookiecutter.environment_prod.replace('prod', 'dev') }}",
     "backend_bucket_prod": "bucket-prod",
     "backend_bucket_dev": "{{ cookiecutter.backend_bucket_prod.replace('prod', 'dev') }}",
+    "buildkite_agent": "buildkite-agent",
     "version": "0.1.0",
     "create_author_file": "y",
     "open_source_license": [

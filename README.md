@@ -32,18 +32,19 @@ $ cookiecutter https://github.com/harrison-ai/cookiecutter-terraform
 full_name [me]: John Citizen
 email [me@there.com]: john@citizen.com
 project_name [Terraform Cookiecutter]: aws-vpc
-project_slug [aws-vpc]: 
+project_slug [aws-vpc]:
 project_short_description [providing all the boilerplate you need to create a terraform package.]: builds a standard AWS VPC
 aws_profile_prod [profile-prod]: datalake-prod
-aws_profile_dev [datalake-dev]:  
-aws_region_prod [ap-southeast-2]: 
-aws_region_dev [ap-southeast-2]: 
+aws_profile_dev [datalake-dev]:
+aws_region_prod [ap-southeast-2]:
+aws_region_dev [ap-southeast-2]:
 environment_prod [env-prod]: company-prod
-environment_dev [company-dev]: 
+environment_dev [company-dev]:
 backend_bucket_prod [bucket-prod]: terraform-backend-prod
-backend_bucket_dev [terraform-backend-dev]: 
-version [0.1.0]: 
-create_author_file [y]: 
+backend_bucket_dev [terraform-backend-dev]:
+buildkite_agent [buildkite-agent]:
+version [0.1.0]:
+create_author_file [y]:
 Select open_source_license:
 1 - Not open source
 2 - MIT license
@@ -51,9 +52,9 @@ Select open_source_license:
 4 - ISC license
 5 - Apache Software License 2.0
 6 - GNU General Public License v3
-Choose from 1, 2, 3, 4, 5, 6 [1]: 
+Choose from 1, 2, 3, 4, 5, 6 [1]:
 
-$ tree aws-vpc 
+$ tree aws-vpc
 aws-vpc
 ├── CHANGELOG.md
 ├── docker-compose.yml

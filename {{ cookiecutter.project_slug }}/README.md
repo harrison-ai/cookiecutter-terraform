@@ -1,6 +1,6 @@
 # {{ cookiecutter.project_name}} #
 
-{{ cookiecutter.project_name }} is a terraform module for {{ cookiecutter.project_short_description }}. 
+{{ cookiecutter.project_name }} is a terraform module for {{ cookiecutter.project_short_description }}.
 
 ## Basic Workflow
 This module is structured using [3 musketeers pattern](https://3musketeers.io/) and by default deploys to the development environment, {{ cookiecutter.environment_dev}}; as such in order to deploy the module to the development environment you can run
@@ -10,13 +10,13 @@ make init
 make plan
 ```
 
-After reviewing the output of the plan the module can be deployed to the development environment using 
+After reviewing the output of the plan the module can be deployed to the development environment using
 
 ```bash
 make apply
 ```
 
-For deployment into the production environment {{ cookiecutter.environment_prod }} simply comment out the development environment variable in the `.env` file and uncomment out the production environment variable as shown below: 
+For deployment into the production environment {{ cookiecutter.environment_prod }} simply comment out the development environment variable in the `.env` file and uncomment out the production environment variable as shown below:
 
 ```
 # Environment
@@ -36,6 +36,11 @@ aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 aws_access_key_id=AKIAIOSFODNN7EXAMPLE
 aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
+
+## Build Pipeline
+
+A Buildkite Pipeline specification is included that will run a Terraform `validate` and Terraform `fmt` command across the entire `./tf` directory.
+
 
 ## What is this repository for?
 

@@ -8,7 +8,7 @@
     "aws_profile_dev": "{{ cookiecutter.aws_profile_prod.replace('prod', 'dev') }}",
     "aws_region_prod": "ap-southeast-2",
     "aws_region_dev": "{{ cookiecutter.aws_region_prod }}",
-    "environment_prod": "env-prod",
+    "environment_prod": "prod",
     "environment_dev": "{{ cookiecutter.environment_prod.replace('prod', 'dev') }}",
     "backend_bucket_prod": "bucket-prod",
     "backend_bucket_dev": "{{ cookiecutter.backend_bucket_prod.replace('prod', 'dev') }}",

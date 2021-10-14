@@ -1,54 +1,54 @@
-ENVIRONMENT := $(shell grep ENVIRONMENT .env | awk -F '=' '{print $$2}')
+ifneq ($(CI), true)
+	include .env
+endif
+
 DATESTRING := $(shell date +%FT%H-%M-%S)
 .DEFAULT_GOAL := help
 
-ifeq ($(ENVIRONMENT), dev)
-	DIR := tf/dev
-else ifeq ($(ENVIRONMENT), prod)
-	DIR := tf/prod
-endif
+TF_DIR = tf/$(ENVIRONMENT)
 
 ## init:			terraform init
 init: .env
 	docker-compose run --rm envvars ensure --tags terraform
-	docker-compose run --rm --workdir /app/$(DIR) terraform init
+	docker-compose run --rm --workdir /app/$(TF_DIR) terraform init
 
 ## init-upgrade:		terraform init -upgrade
 init-upgrade: .env
 	docker-compose run --rm envvars ensure --tags terraform
-	docker-compose run --rm --workdir /app/$(DIR) terraform init -upgrade
+	docker-compose run --rm --workdir /app/$(TF_DIR) terraform init -upgrade
 
 ## fmt: 			terraform fmt -recursive
 fmt: .env
-	docker-compose run --rm --workdir /app terraform terraform fmt -recursive
+	docker-compose run --rm --workdir /app terraform fmt -recursive
 
 ## ci-fmt:			terraform fmt -recursive -check -diff -write=false
-ci-fmt: .env
-	docker-compose run --rm --workdir /app terraform terraform fmt -recursive -check -diff -write=false
+ci-fmt:
+	touch .env
+	docker-compose run --rm --workdir /app terraform fmt -recursive -check -diff -write=false
 
 ## plan:			terraform plan
 plan: .env
 	docker-compose run --rm envvars ensure --tags terraform
-	docker-compose run --rm --workdir /app/$(DIR) terraform plan
+	docker-compose run --rm --workdir /app/$(TF_DIR) terraform plan
 
 ## plan-print:		terraform plan -no-color | tee plan-<date>.out
 plan-print: .env
 	docker-compose run --rm envvars ensure --tags terraform
-	docker-compose run --rm --workdir /app/$(DIR) terraform plan -no-color | tee plan-${DATESTRING}.out
+	docker-compose run --rm --workdir /app/$(TF_DIR) terraform plan -no-color | tee plan-${DATESTRING}.out
 
 ## apply:			terraform apply
 apply: .env
 	docker-compose run --rm envvars ensure --tags terraform
-	docker-compose run --rm --workdir /app/$(DIR) terraform apply
+	docker-compose run --rm --workdir /app/$(TF_DIR) terraform apply
 
 ## validate: 		terraform validate across all environments
-validate: .env
+validate:
 	./scripts/tf-validate.sh
 
 ## destroy:		terraform destroy
 destroy: .env
 	docker-compose run --rm envvars ensure --tags terraform
-	docker-compose run --rm --workdir /app/$(DIR) terraform destroy
+	docker-compose run --rm --workdir /app/$(TF_DIR) terraform destroy
 
 ## tf-shell:		opens a shell inside the terraform container
 tf-shell: .env

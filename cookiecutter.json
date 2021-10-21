@@ -1,4 +1,5 @@
 {
+    "_extensions": ["jinja2_time.TimeExtension"],
     "full_name": "me",
     "email": "me@there.com",
     "project_name": "Terraform Cookiecutter",

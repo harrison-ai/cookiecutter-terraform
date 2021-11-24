@@ -1,0 +1,14 @@
+name: Run Terraform Checks
+
+on: push
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: terraform format
+        run: make ci-fmt
+      - name: terraform validate
+        run: make validate

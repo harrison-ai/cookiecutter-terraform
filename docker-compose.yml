@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+
+  app:
+    build:
+      context: .
+    environment:
+      PYTHONUNBUFFERED: 1
+    volumes:
+      - .:/app

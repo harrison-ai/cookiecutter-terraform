@@ -1,6 +1,7 @@
 locals {
-  region   = "{{ cookiecutter.aws_region_prod }}"
+  env_name = "{{ cookiecutter.environment_prod }}"
   profile  = "{{ cookiecutter.aws_profile_prod }}"
   project  = "{{ cookiecutter.project_slug }}"
-  env_name = "{{ cookiecutter.environment_prod }}"
+  region   = "{{ cookiecutter.aws_region_prod }}"
+  repo     = "{{ cookiecutter.project_slug }}"
 }

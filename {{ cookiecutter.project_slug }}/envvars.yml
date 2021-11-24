@@ -3,15 +3,18 @@ tags:
 
 envvars:
   - name: AWS_PROFILE
+    example: harrison-data-dev
     optional: true
     tags:
       - terraform
 
   - name: AWS_REGION
+    example: ap-southeast-2
     optional: true
     tags:
       - terraform
 
   - name: ENVIRONMENT
+    example: dev
     tags:
       - terraform

@@ -62,7 +62,7 @@ pull:
 ## .env:			creates .env file with the envvar keys populated
 .env:
 	touch .env
-	docker-compose run --rm envvars envfile --overwrite
+	docker-compose run --rm envvars envfile --overwrite --example
 
 ## help:			show this help
 help:

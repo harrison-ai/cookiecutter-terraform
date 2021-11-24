@@ -39,7 +39,7 @@ aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 ## Build Pipeline
 
-A Buildkite Pipeline specification is included that will run a Terraform `validate` and Terraform `fmt` command across the entire `./tf` directory.
+A GitHub Actions job specification is included that will run a Terraform `validate` and Terraform `fmt` command across the entire `./tf` directory.
 
 
 ## What is this repository for?

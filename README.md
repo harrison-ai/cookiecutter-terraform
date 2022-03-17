@@ -13,6 +13,14 @@
 - Automatically populate configuration details for development and production environments
 - [3 musketeers](https://3musketeers.io/) pattern usage
 
+
+## Docker Usage
+
+1. `make docker-build` - Build the Docker image
+2. `make cookiecutter` - Launch the cookiecutter wizard
+
+Once the wizard completes, the new cookiecutter'ed repo will exist in the root of this repo.  Move it to your desired location
+
 ## Usage
 
 1. First install cookiecutter via `pip install cookiecutter`

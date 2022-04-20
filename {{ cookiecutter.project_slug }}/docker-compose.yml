@@ -2,7 +2,7 @@ version: '3.7'
 services:
 
   terraform:
-    image: hashicorp/terraform:1.1.7
+    image: hashicorp/terraform:1.1.9
     env_file: .env
     volumes:
       - '~/.aws:/root/.aws:ro'

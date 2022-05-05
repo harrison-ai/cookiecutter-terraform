@@ -41,6 +41,23 @@ aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 A GitHub Actions job specification is included that will run a Terraform `validate` and Terraform `fmt` command across the entire `./tf` directory.
 
+### Github Actions read access to other private repos
+
+We have developed private Terraform modules, located in Github private repos.  Should you need to consume one of these private modules, configure access as follows:
+
+- If there isn't one already, configure a read only deploy key in the source repository
+- Configure the deploy key private key as a repository secret on the consuming repository
+- Uncomment and configure the `configure deploy keys` step of the Github Actions workflow as follows:
+  ```
+  - name: configure deploy keys
+    uses: webfactory/ssh-agent@v0.5.4
+    with:
+      ssh-private-key: ${{ secrets.<SECRET> }}
+
+  ```
+
+Note that there are specific requirements for creating deploy keys, see https://github.com/webfactory/ssh-agent
+
 
 ## What is this repository for?
 

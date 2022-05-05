@@ -1,11 +1,17 @@
+.PHONY: .tf_version
+
 ifneq ($(CI), true)
 	include .env
 endif
 
 DATESTRING := $(shell date +%FT%H-%M-%S)
+TF_VERSION := $(shell cat .tf_version)
 .DEFAULT_GOAL := help
 
 TF_DIR = tf/$(ENVIRONMENT)
+
+.EXPORT_ALL_VARIABLES:
+	export TF_VERSION=${TF_VERSION}
 
 ## init:			terraform init
 init: .env

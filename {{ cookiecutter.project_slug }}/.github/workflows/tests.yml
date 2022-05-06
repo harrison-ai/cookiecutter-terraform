@@ -1,3 +1,4 @@
+{% raw -%}
 name: Run Terraform Checks
 
 on: push
@@ -22,7 +23,7 @@ jobs:
       - name: set up terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: ${{env.TERRAFORM_VERSION}}
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
           terraform_wrapper: false
 
       - name: terraform format
@@ -30,3 +31,4 @@ jobs:
 
       - name: terraform validate
         run: make validate
+{% endraw -%}

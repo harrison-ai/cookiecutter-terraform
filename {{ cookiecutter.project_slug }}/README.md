@@ -1,8 +1,9 @@
-# {{ cookiecutter.project_name}} #
+# {{ cookiecutter.project_name}}
 
 {{ cookiecutter.project_name }} is a terraform module for {{ cookiecutter.project_short_description }}.
 
 ## Basic Workflow
+
 This module is structured using [3 musketeers pattern](https://3musketeers.io/) and by default deploys to the development environment, {{ cookiecutter.environment_dev}}; as such in order to deploy the module to the development environment you can run
 
 ```bash
@@ -25,6 +26,7 @@ ENVIRONMENT={{ cookiecutter.environment_prod }}
 ```
 
 ### AWS credentials
+
 If is expected that your AWS credentials for the environment to be deployed to are available within the `~/.aws/credentials` file under the section {{ cookiecutter.aws_profile_dev}} and/or {{ cookiecutter.aws_profile_prod }} e.g.
 
 ```
@@ -43,47 +45,52 @@ A GitHub Actions job specification is included that will run a Terraform `valida
 
 ### Github Actions read access to other private repos
 
-We have developed private Terraform modules, located in Github private repos.  Should you need to consume one of these private modules, configure access as follows:
+We have developed private Terraform modules, located in Github private repos. Should you need to consume one of these private modules, configure access as follows:
 
 - If there isn't one already, configure a read only deploy key in the source repository
 - Configure the deploy key private key as a repository secret on the consuming repository
 - Uncomment and configure the `configure deploy keys` step of the Github Actions workflow as follows:
-  ```
-  - name: configure deploy keys
-    uses: webfactory/ssh-agent@v0.5.4
-    with:
-      ssh-private-key: ${{ secrets.<SECRET> }}
 
-  ```
+{% raw -%}
+
+```
+- name: configure deploy keys
+  uses: webfactory/ssh-agent@v0.5.4
+  with:
+    ssh-private-key: ${{ secrets.<SECRET> }}
+
+```
+
+{% endraw -%}
 
 Note that there are specific requirements for creating deploy keys, see https://github.com/webfactory/ssh-agent
 
-
 ## What is this repository for?
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+- Quick summary
+- Version
+- [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ## How do I get set up?
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+- Summary of set up
+- Configuration
+- Dependencies
+- Database configuration
+- How to run tests
+- Deployment instructions
 
 ## Contribution guidelines
 
-* Writing tests
-* Code review
-* Other guidelines
+- Writing tests
+- Code review
+- Other guidelines
 
 ## Who do I talk to?
 
-* Repo owner or admin {{ cookiecutter.full_name }}({{ cookiecutter.email }})
-* Harrison.ai Data Engineering team
+- Repo owner or admin {{ cookiecutter.full_name }}({{ cookiecutter.email }})
+- Harrison.ai Data Engineering team
 
 ## Credits
+
 This repository was created using the [harrison-ai terraform cookiecutter] template (https://github.com/harrison-ai/cookiecutter-terraform)

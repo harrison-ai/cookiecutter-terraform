@@ -14,7 +14,7 @@ for ENV in ${ENVS[@]}; do
     terraform -chdir=${GITHUB_WORKSPACE}/${ENV} validate -json
   else
     echo "validating environment ${ENV}"
-    docker-compose run --rm --workdir /app/${ENV} app init -backend=false
-    docker-compose run --rm --workdir /app/${ENV} app validate -json
+    docker-compose run --rm --workdir /app/${ENV} terraform init -backend=false
+    docker-compose run --rm --workdir /app/${ENV} terraform validate -json
   fi
 done

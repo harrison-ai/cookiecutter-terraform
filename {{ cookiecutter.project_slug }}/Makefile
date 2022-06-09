@@ -1,7 +1,7 @@
 .PHONY: .tf_version
 
 ifneq ($(CI), true)
-	include .env
+include .env
 endif
 
 DATESTRING := $(shell date +%FT%H-%M-%S)

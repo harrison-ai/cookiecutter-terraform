@@ -4,7 +4,7 @@
 
 <!-- [![Documentation Status]][2] -->
 
--   Free software: GNU General Public License v3
+-   Free software: BSD 3 Clause License 
 <!-- -   Documentation: <https://cookiecutter-terraform.readthedocs.io>. -->
 
 ## Features

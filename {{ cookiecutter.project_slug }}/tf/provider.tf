@@ -1,6 +1,7 @@
 terraform {
-
   required_version = ">= 1.0.10"
+
+  backend "s3" {}
 
   required_providers {
     aws = {
@@ -11,14 +12,12 @@ terraform {
 }
 
 provider "aws" {
-  region  = local.region
-  profile = local.profile
+  region  =  "ap-southeast-2"
+  profile = var.CI ? "" : var.profile
 
   default_tags {
     tags = {
-      # NB: Capitalization is correct and required
-      Project = local.project
-      Repo    = local.repo
+      Repo = var.repo
     }
   }
 }

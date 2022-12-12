@@ -1,0 +1,24 @@
+
+name: "Terraform Plan"
+
+on:
+  pull_request:
+
+jobs:
+  terraform-plan-all-envs:
+    strategy:
+      matrix:
+        include:
+          - environment: "dev"
+            assume-role: "" # ASSUME ROLE ARN
+          - environment: "prod"
+            assume-role: "" # ASSUME ROLE ARN
+
+    uses: harrison-ai/actions-library/.github/workflows/terraform-plan-env.yml@main
+    with:
+{% raw -%}
+      environment: ${{ matrix.environment }}
+      aws-account-id: ${{ matrix.aws-account-id }}
+      base-role: # BASE ROLE ARN
+{% endraw -%}
+      repo-name: {{ cookiecutter.repo_name }}

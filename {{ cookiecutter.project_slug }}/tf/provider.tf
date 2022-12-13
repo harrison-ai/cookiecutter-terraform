@@ -12,7 +12,7 @@ terraform {
 }
 
 provider "aws" {
-  region  =  "ap-southeast-2"
+  region  =  var.region
   profile = var.CI ? "" : var.profile
 
   default_tags {

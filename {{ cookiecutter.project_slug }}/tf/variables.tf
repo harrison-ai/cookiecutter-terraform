@@ -7,6 +7,10 @@ variable "profile" {
   type = string
 }
 
+variable "region" {
+  type = string
+}
+
 variable "repo" {
   type = string
 }

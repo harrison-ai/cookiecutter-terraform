@@ -21,7 +21,7 @@ jobs:
         run: echo TERRAFORM_VERSION=$(cat .tf_version) >> $GITHUB_ENV
 
       - name: set up terraform
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: ${{ env.TERRAFORM_VERSION }}
           terraform_wrapper: false
